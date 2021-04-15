@@ -11,7 +11,7 @@ while True:
     meny = ( "\n"
              "\n #Bank & Meny"
              "\n # Saldo {} kr"
-             "\n"
+             "\n"                                              #BÖRJA PÅ 6.1
              "\n 1. Visa saldo"
              "\n 2. Gör en insättning"
              "\n 3. Gör ett uttag"
