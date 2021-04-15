@@ -24,14 +24,16 @@ while True:
         print(f"Saldot är: {saldo}kr")      #printar saldo
     elif val == 2:
         insättning = int(input("Ange din summa: "))
-        if insättning >= 0:
+        if insättning >= 0:                               # Summan måste vara större än 0
             saldo += insättning 
         else:
             print("Kan inte skriva negativa summor")
-    elif val == 3:                                        # Fortsätt på 4.5, summan behöver vara större än 0
+    elif val == 3:                                        # Summan behöver vara större än 0
         uttag = int(input("Ange din summa: "))          
-        if uttag <= saldo:
+        if uttag <= saldo and uttag >= 0:
             saldo -= uttag
+        elif uttag <= 0:
+            print("Uttaget kan inte vara negativt")
         else:
             print("Du har inte tillräckligt med pengar, sorry mate.")
     else: 
