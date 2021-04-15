@@ -25,13 +25,13 @@ while True:
     elif val == 2:
         insättning = int(input("Ange din summa: "))
         if insättning >= 0:                               # Summan måste vara större än 0
-            saldo += insättning 
+            saldo += insättning                           # Lägger till insättning i saldo
         else:
             print("Kan inte skriva negativa summor")
-    elif val == 3:                                        # Summan behöver vara större än 0
-        uttag = int(input("Ange din summa: "))          
-        if uttag <= saldo and uttag >= 0:
-            saldo -= uttag
+    elif val == 3:                                        
+        uttag = int(input("Ange din summa: "))            
+        if uttag <= saldo and uttag >= 0:                 # Summan behöver vara större än 0
+            saldo -= uttag                                # Tar bort summan i uttag från saldo
         elif uttag <= 0:
             print("Uttaget kan inte vara negativt")
         else:
