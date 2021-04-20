@@ -1,3 +1,14 @@
+#Funktioner
+def balance ():
+    """ Beräknar saldot på kontot
+    
+    :retur: saldot
+    """
+
+    balance = 0
+    for t in transaktioner:
+        balance += t
+    return balance 
 
 #Variabler 
 saldo = 1000                # Startvärde på 1000 kr
@@ -5,18 +16,20 @@ transaktioner = []          # Lista som lagrar transaktioner
 transaktioner.append(1000)  # Startvärde på 1000 kr
 
 
-# programloop
-while True:
 
+# programloop 
+while True:
+    # skriver ut menyn och frågar användaren vad den vill göra
+    # Skapar en flera rader för menyn 
     meny = ( "\n"
-             "\n #Bank & Meny"
+             "\n # Bank & Meny"
              "\n # Saldo {} kr"
-             "\n"                                              #BÖRJA PÅ 6.1
+             "\n"                                              
              "\n 1. Visa saldo"
              "\n 2. Gör en insättning"
              "\n 3. Gör ett uttag"
              "\n 0. Avsluta program"
-             "\n Gör ditt val:".format(saldo))
+             "\n Gör ditt val:".format(balance()))
 
     val = int(input(meny))
 
@@ -36,15 +49,13 @@ while True:
     elif val == 2:
         insättning = int(input("Ange din summa: "))
         if insättning >= 0:                               # Summan måste vara större än 0
-            saldo += insättning                           # Lägger till insättning i saldo
-            transaktioner.append(insättning)              # 
+            transaktioner.append(insättning)              # Lägger till insättning i saldo
         else:
             print("Kan inte skriva negativa summor")
     elif val == 3:                                        
         uttag = int(input("Ange din summa: "))            
-        if uttag <= saldo and uttag >= 0:                 # Summan behöver vara större än 0
-            saldo -= uttag                                # Tar bort summan i uttag från saldo
-            transaktioner.append(-uttag)
+        if uttag <= balance() and uttag >= 0:             # Summan behöver vara större än 0
+            transaktioner.append(-uttag)                  # Tar bort summan i uttag från saldo
         elif uttag <= 0:
             print("Uttaget kan inte vara negativt")
         else:
