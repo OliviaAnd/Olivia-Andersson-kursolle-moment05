@@ -10,6 +10,34 @@ def balance ():
         balance += t
     return balance 
 
+def validate_int(output, error_mess):
+
+    while True:
+        try:
+            value = int(input(output))
+            break
+        except:
+            print(error_mess)
+    return value
+
+def print_transaktioner():
+    """ Skapar utrskrift av alla transaktioner
+
+    :return: sträng med hela utskriften
+     """
+    line = 0
+    balance = 0
+    output = ("\nAlla transaktioner:"                                               #Transaktioner skrivs ut med rubriker
+              "\n{:>3} {:>12} {:>12}"
+              "\n_____________________________").format("Nr", "Händlese", "Saldo")
+    for t in transaktioner:
+        line += 1
+        balance += t
+        output += ("\n {:>2}. {:>9} kr {:>9} kr".format(line, t, balance))
+    
+    return output
+
+
 #Variabler 
 saldo = 1000                # Startvärde på 1000 kr
 transaktioner = []          # Lista som lagrar transaktioner 
@@ -31,29 +59,21 @@ while True:
              "\n 0. Avsluta program"
              "\n Gör ditt val:".format(balance()))
 
-    val = int(input(meny))
+    val = validate_int(meny, "Felaktig inmatning!")
 
     if val == 0:
         break
     elif val == 1:
-        line = 0
-        sum = 0
-        head = ("\nAlla transaktioner:"                                               #Transaktioner skrivs ut med rubriker
-                "\n{:>3} {:>12} {:>12}"
-                "\n_____________________________").format("Nr", "Händlese", "Saldo")
-        print(head)
-        for t in transaktioner:
-            line += 1
-            sum += t
-            print("{:>2}. {:>9} kr {:>9} kr".format(line, t, sum))
+        print(print_transaktioner())
+        
     elif val == 2:
-        insättning = int(input("Ange din summa: "))
+        insättning = validate_int("Ange din summa: ", "Felaktig inmatning!")
         if insättning >= 0:                               # Summan måste vara större än 0
             transaktioner.append(insättning)              # Lägger till insättning i saldo
         else:
             print("Kan inte skriva negativa summor")
     elif val == 3:                                        
-        uttag = int(input("Ange din summa: "))            
+        uttag = validate_int("Ange din summa: ", "Felaktig inmatning!")            
         if uttag <= balance() and uttag >= 0:             # Summan behöver vara större än 0
             transaktioner.append(-uttag)                  # Tar bort summan i uttag från saldo
         elif uttag <= 0:
