@@ -1,48 +1,10 @@
-#Funktioner
-def balance ():
-    """ Beräknar saldot på kontot
-    
-    :retur: saldot
-    """
-
-    balance = 0
-    for t in transaktioner:
-        balance += t
-    return balance 
-
-def validate_int(output, error_mess):
-
-    while True:
-        try:
-            value = int(input(output))
-            break
-        except:
-            print(error_mess)
-    return value
-
-def print_transaktioner():
-    """ Skapar utrskrift av alla transaktioner
-
-    :return: sträng med hela utskriften
-     """
-    line = 0
-    balance = 0
-    output = ("\nAlla transaktioner:"                                               #Transaktioner skrivs ut med rubriker
-              "\n{:>3} {:>12} {:>12}"
-              "\n_____________________________").format("Nr", "Händlese", "Saldo")
-    for t in transaktioner:
-        line += 1
-        balance += t
-        output += ("\n {:>2}. {:>9} kr {:>9} kr".format(line, t, balance))
-    
-    return output
+from functions import *
 
 
 #Variabler 
-saldo = 1000                # Startvärde på 1000 kr
-transaktioner = []          # Lista som lagrar transaktioner 
+check_file_exists()
+read_file()
 transaktioner.append(1000)  # Startvärde på 1000 kr
-
 
 
 # programloop 
