@@ -1,2 +1,2 @@
-transaktioner = []          # Lista som lagrar transaktioner 
+transactions = []          # Lista som lagrar transaktioner 
 filename = "transactions.txt"

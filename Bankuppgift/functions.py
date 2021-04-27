@@ -8,7 +8,7 @@ def balance ():
     """
 
     balance = 0
-    for t in transaktioner:
+    for t in transactions:
         balance += t
     return balance 
 
@@ -24,7 +24,7 @@ def validate_int(output, error_mess):
     return value
 
 
-def print_transaktioner():
+def print_transactions():
     """ Skapar utrskrift av alla transaktioner
 
     :return: sträng med hela utskriften
@@ -34,7 +34,7 @@ def print_transaktioner():
     output = ("\nAlla transaktioner:"                                               #Transaktioner skrivs ut med rubriker
               "\n{:>3} {:>12} {:>12}"
               "\n_____________________________").format("Nr", "Händlese", "Saldo")
-    for t in transaktioner:
+    for t in transactions:
         line += 1
         balance += t
         output += ("\n {:>2}. {:>9} kr {:>9} kr".format(line, t, balance))
@@ -68,5 +68,19 @@ def read_file():
     with open(filename) as f:
         for rad in f:
             if len(rad) > 0:
-                transaktioner.append(int(rad))
+                transactions.append(int(rad))
+
+
+
+
+def add_transaction(transaction):
+    """ Lagrar transaktioner till transaktionslistan och till filen
+
+    :return: None
+    """
+    transactions.append(transaction)
+    with open(filename, "a") as f:
+        f.write("{}\n".format(transaction))
+
+
 

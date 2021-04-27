@@ -4,7 +4,7 @@ from functions import *
 #Variabler 
 check_file_exists()
 read_file()
-transaktioner.append(1000)  # Startvärde på 1000 kr
+transactions.append(1000)  # Startvärde på 1000 kr
 
 
 # programloop 
@@ -26,18 +26,18 @@ while True:
     if val == 0:
         break
     elif val == 1:
-        print(print_transaktioner())
+        print(print_transactions())
         
     elif val == 2:
         insättning = validate_int("Ange din summa: ", "Felaktig inmatning!")
         if insättning >= 0:                               # Summan måste vara större än 0
-            transaktioner.append(insättning)              # Lägger till insättning i saldo
+            add_transaction(insättning)              # Lägger till insättning i saldo
         else:
             print("Kan inte skriva negativa summor")
     elif val == 3:                                        
         uttag = validate_int("Ange din summa: ", "Felaktig inmatning!")            
         if uttag <= balance() and uttag >= 0:             # Summan behöver vara större än 0
-            transaktioner.append(-uttag)                  # Tar bort summan i uttag från saldo
+            add_transaction(-uttag)                  # Tar bort summan i uttag från saldo
         elif uttag <= 0:
             print("Uttaget kan inte vara negativt")
         else:
