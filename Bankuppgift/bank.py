@@ -1,11 +1,5 @@
 from functions import *
-
-
-#Variabler 
-check_file_exists()        # Kollar om filen finns, annars skapar den en 
-read_file()
-transactions.append(1000)  # Startvärde på 1000 kr
-
+read_file()                # Läser in och/eller skapar fil med transaktioner 
 
 # programloop 
 while True:
@@ -24,18 +18,20 @@ while True:
 
     val = validate_int(meny, "Felaktig inmatning!")
 
-    if val == 0:
+    if val == 0:                        # Avsluta
         break
-    elif val == 1:
+
+    elif val == 1:                      # Visa transaktioner 
         print(print_transactions())
         
-    elif val == 2:
+    elif val == 2:                      # Gör insättning
         insättning = validate_int("Ange din summa: ", "Felaktig inmatning!")
         if insättning >= 0:                               # Summan måste vara större än 0
             add_transaction(insättning, True)              # Lägger till insättning i saldo
         else:
             print("Kan inte skriva negativa summor")
-    elif val == 3:                                        
+
+    elif val == 3:                      # Gör uttag              
         uttag = validate_int("Ange din summa: ", "Felaktig inmatning!")            
         if uttag <= balance() and uttag >= 0:             # Summan behöver vara större än 0
             add_transaction(-uttag, True)                  # Tar bort summan i uttag från saldo
@@ -43,16 +39,14 @@ while True:
             print("Uttaget kan inte vara negativt")
         else:
             print("Du har inte tillräckligt med pengar, sorry mate.")
-    elif val == 4:
+
+    elif val == 4:            # Nollställer konto
         os.remove(filename)   # Tar bort filen 
         transactions.clear()  # Töm listan 
         read_file()           # Skapa filen och läs in den
-    else: 
+   
+    else:                     # Alla felaktiga val
         print("Felaktigt val")
     
 print("Tack för ditt besök")
-    # visa saldo 
-    # gör en insättning 
-    # gör ett uttag 
-    # avsluta programmet
-# fil att lagra transaktioner 
+   

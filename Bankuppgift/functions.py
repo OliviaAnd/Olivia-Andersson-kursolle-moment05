@@ -14,7 +14,12 @@ def balance ():
 
 
 def validate_int(output, error_mess):
-
+    """ Validerar inmatat värde
+    
+    :param output: Text som skrivs till användaren 
+    :param error-mess: Text som skrivs om inmatning är felaktigt
+    :return: validerat värde
+     """
     while True:
         try:
             value = int(input(output))
