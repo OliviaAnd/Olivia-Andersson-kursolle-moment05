@@ -2,7 +2,7 @@ from functions import *
 
 
 #Variabler 
-check_file_exists()
+check_file_exists()        # Kollar om filen finns, annars skapar den en 
 read_file()
 transactions.append(1000)  # Startvärde på 1000 kr
 
@@ -31,13 +31,13 @@ while True:
     elif val == 2:
         insättning = validate_int("Ange din summa: ", "Felaktig inmatning!")
         if insättning >= 0:                               # Summan måste vara större än 0
-            add_transaction(insättning)              # Lägger till insättning i saldo
+            add_transaction(insättning, True)              # Lägger till insättning i saldo
         else:
             print("Kan inte skriva negativa summor")
     elif val == 3:                                        
         uttag = validate_int("Ange din summa: ", "Felaktig inmatning!")            
         if uttag <= balance() and uttag >= 0:             # Summan behöver vara större än 0
-            add_transaction(-uttag)                  # Tar bort summan i uttag från saldo
+            add_transaction(-uttag, True)                  # Tar bort summan i uttag från saldo
         elif uttag <= 0:
             print("Uttaget kan inte vara negativt")
         else:
