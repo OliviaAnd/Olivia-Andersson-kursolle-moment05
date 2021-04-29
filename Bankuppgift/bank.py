@@ -18,6 +18,7 @@ while True:
              "\n 1. Visa saldo"
              "\n 2. Gör en insättning"
              "\n 3. Gör ett uttag"
+             "\n 4. Nollställ konto"
              "\n 0. Avsluta program"
              "\n Gör ditt val:".format(balance()))
 
@@ -38,6 +39,10 @@ while True:
         uttag = validate_int("Ange din summa: ", "Felaktig inmatning!")            
         if uttag <= balance() and uttag >= 0:             # Summan behöver vara större än 0
             add_transaction(-uttag, True)                  # Tar bort summan i uttag från saldo
+    elif val == 4:
+        os.remove(filename)   # Tar bort filen 
+        transactions.clear()  # Töm listan 
+        read_file()           # Skapa filen och läs in den
         elif uttag <= 0:
             print("Uttaget kan inte vara negativt")
         else:
